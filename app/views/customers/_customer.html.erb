@@ -1,0 +1,15 @@
+<% if @customers.present? %>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.customer_id %></td>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.last_name %></td>
+      <td><%= customer.email.split(',').join('<br />').html_safe if customer.email %></td>
+      <td><%= customer.phone.split(',').join('<br />').html_safe if customer.phone %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td colspan="5"> No records found.. </td>
+  </tr>
+<% end %>

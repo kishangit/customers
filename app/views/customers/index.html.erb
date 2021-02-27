@@ -1,0 +1,29 @@
+<div style="display: flex;">
+<%= form_tag('/import', remote: true, :class => "position-form", multipart: true) do %>
+  <label class="custom-file-upload btn btn-secondary">
+    <%= file_field(:attachment, :file, class: 'file_input') %>
+    <i class="fa fa-cloud-upload"></i>
+  </label>
+  <button type="submit" class="btn btn-success" id="upload-btn" style="margin: 0 0 0 5px;">Import CSV</button>
+  <% end %>
+  </div>
+  <div id="loader" style="display: none;">
+    <div style="margin-left: 25px;" class="loader">Loading...</div>
+    <div style="margin-left: 80px;">Import process is running..</div>
+  </div>
+<br />
+
+<table class="table table-dark table-hover" id="customers_table">
+  <thead>
+    <tr class="table-header">
+      <th>Customer Id</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody id="main_content">
+  <%= render 'customers/customer' %>
+  </tbody>
+</table>
